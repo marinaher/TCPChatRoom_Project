@@ -1,0 +1,8 @@
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Client\bin\Debug\Client.exe.config
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Client\bin\Debug\Client.exe
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Client\bin\Debug\Client.pdb
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Client\bin\Debug\ServerData.dll
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Client\bin\Debug\ServerData.pdb
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Client\obj\Debug\Client.exe
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Client\obj\Debug\Client.pdb
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
