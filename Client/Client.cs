@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ServerData;
 using System.Net;
-using System.IO;
 using System.Net.Sockets;
 using System.Threading;
 
@@ -19,26 +14,24 @@ namespace Client
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter Your Name: ");
+            Console.WriteLine("Enter your username: ");
             name = Console.ReadLine();
 
             Console.Clear();
-            Console.WriteLine("What is your IP?");
+            Console.WriteLine("Enter IP address:");
             string IP = Console.ReadLine();
 
             masterSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-            IPEndPoint IP_end = new IPEndPoint(IPAddress.Parse(IP), 4242);                      // I don't like 4242
+            IPEndPoint IP_end = new IPEndPoint(IPAddress.Parse(IP), 4242);
             
             try
             {
-                masterSocket.Connect(IP_end);
+                masterSocket.Connect(IP_end);        //if this fails, catch "catches" it and doesnt crash the whole program
             }
             catch
             {
-                Console.WriteLine("Could not connect to server");
-                Console.ReadLine();
-                Environment.Exit(0);
+                Console.WriteLine("Server connection failed. \n");
+                Main(args);
             }
 
             Thread thread = new Thread(data_IN);
@@ -46,12 +39,12 @@ namespace Client
 
             for (;;)
             {
-                Console.Write("::>");
+                Console.Write("");
                 string input = Console.ReadLine();
 
                 Packet packet = new Packet(PacketType.chat, ID);
                 packet.GeneralData.Add(name);
-                packet.GeneralData.Add(input);                                                  //gets input and sends to server
+                packet.GeneralData.Add(input);          //gets input and sends to server
                 masterSocket.Send(packet.ToBytes());
             }
         }
@@ -73,7 +66,7 @@ namespace Client
                         DataManager(new Packet(buffer));
                     }
                 }
-                catch (SocketException ex)
+                catch (SocketException)
                 {
                     Console.WriteLine("The server has been disconnected!");
                     Console.ReadLine();
@@ -82,13 +75,12 @@ namespace Client
             }
 
         }
-
         static void DataManager(Packet packet)
         {
             switch (packet.packetType)
             {
                 case PacketType.Registration:
-                    Console.WriteLine("Connected to Server!");
+                    Console.WriteLine("You are now connected, {0}. \nEnter text: ", name);
                     ID = packet.GeneralData[0];
                     break;
                 case PacketType.chat:

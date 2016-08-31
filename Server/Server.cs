@@ -19,16 +19,16 @@ namespace Server
             listenerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             clients = new List<ClientData>();
 
-            IPEndPoint IP_End = new IPEndPoint(IPAddress.Parse(Packet.GetIPAddress()), 4242);   // change 4242 - i dont like magic#'s
-            listenerSocket.Bind(IP_End);                                                        //IPendPoint 
+            IPEndPoint IP_End = new IPEndPoint(IPAddress.Parse(Packet.GetIPAddress()), 4242);
+            listenerSocket.Bind(IP_End);
 
             Thread listenThread = new Thread(ListenThread);                                     // another thread CPU cycles thru
             listenThread.Start();
 
-            Console.WriteLine("Success! \nListening IP: " + Packet.GetIPAddress() + ":4242");    // change 4242!
+            Console.WriteLine("Success! \nListening IP: " + Packet.GetIPAddress());
         }
 
-        static void ListenThread()                                              //listener
+        static void ListenThread()
         {
             for (;;)                                                            //for loop is infinite b/c we want the listener to listen for new clients until the program closes
             {
