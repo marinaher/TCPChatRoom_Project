@@ -38,7 +38,7 @@ namespace ServerData
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             MemoryStream memoryStream = new MemoryStream(packetBytes);
 
-            Packet packet = (Packet)binaryFormatter.Deserialize(memoryStream);
+            Packet packet = (Packet)binaryFormatter.Deserialize(memoryStream);    //deserialize
             memoryStream.Close();
             GeneralData = packet.GeneralData;
             packetInt = packet.packetInt;
@@ -56,7 +56,7 @@ namespace ServerData
                     return ipAddress.ToString();
                 }
             }
-            return "127.0.0.1";                                             //default IP address: points back to user
+            return "10.2.20.51";                                             //default IP address: points back to user
         }
     }
 

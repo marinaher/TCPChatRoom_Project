@@ -1,5 +1,6 @@
 ﻿using ServerData;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
@@ -11,8 +12,8 @@ namespace Server
     {
         static Socket listenerSocket;
         static List<ClientData> clients;
-        
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
             Console.WriteLine("Starting Server on: " + Packet.GetIPAddress());
 
@@ -22,7 +23,7 @@ namespace Server
             IPEndPoint IP_End = new IPEndPoint(IPAddress.Parse(Packet.GetIPAddress()), 4242);
             listenerSocket.Bind(IP_End);
 
-            Thread listenThread = new Thread(ListenThread);                                     // another thread CPU cycles thru
+            Thread listenThread = new Thread(ListenThread);
             listenThread.Start();
 
             Console.WriteLine("Success! \nListening IP: " + Packet.GetIPAddress());
@@ -57,7 +58,7 @@ namespace Server
                         DataManager(packet);
                     }
                 }
-                catch (SocketException ex)
+                catch (SocketException)
                 {
                     Console.WriteLine("A client has disconnected.");
                     Console.ReadLine();

@@ -20,13 +20,15 @@ namespace Client
             Console.Clear();
             Console.WriteLine("Enter IP address:");
             string IP = Console.ReadLine();
+            Console.WriteLine("\nWhat is the port number?");
+            string port = Console.ReadLine();
 
             masterSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            IPEndPoint IP_end = new IPEndPoint(IPAddress.Parse(IP), 4242);
+            IPEndPoint IP_end = new IPEndPoint(IPAddress.Parse(IP), int.Parse(port));
             
             try
             {
-                masterSocket.Connect(IP_end);        //if this fails, catch "catches" it and doesnt crash the whole program
+                masterSocket.Connect(IP_end);
             }
             catch
             {
@@ -44,7 +46,7 @@ namespace Client
 
                 Packet packet = new Packet(PacketType.chat, ID);
                 packet.GeneralData.Add(name);
-                packet.GeneralData.Add(input);          //gets input and sends to server
+                packet.GeneralData.Add(input);                                          //gets input and sends to server
                 masterSocket.Send(packet.ToBytes());
             }
         }
@@ -80,13 +82,13 @@ namespace Client
             switch (packet.packetType)
             {
                 case PacketType.Registration:
-                    Console.WriteLine("You are now connected, {0}. \nEnter text: ", name);
+                    Console.WriteLine("You are now connected, {0}. \nEnter Message: ", name);
                     ID = packet.GeneralData[0];
                     break;
                 case PacketType.chat:
                     ConsoleColor color = Console.ForegroundColor;
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine(packet.GeneralData[0] + ": " + packet.GeneralData[1]);        //0 = name, 1 = message
+                    Console.WriteLine(packet.GeneralData[0] + ": " + packet.GeneralData[1]);
                     Console.ForegroundColor = color;
                     break;
             }

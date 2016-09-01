@@ -2,3 +2,4 @@ C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\ServerDa
 C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\ServerData\bin\Debug\ServerData.pdb
 C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\ServerData\obj\Debug\ServerData.dll
 C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\ServerData\obj\Debug\ServerData.pdb
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\ServerData\obj\Debug\ServerData.csprojResolveAssemblyReference.cache
