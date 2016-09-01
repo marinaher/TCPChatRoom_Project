@@ -31,7 +31,8 @@ namespace TreeNode
             {
                 nodeString += "Right: " + this.right.ToString();
             }
-            return base.ToString();
+            nodeString += "]";
+            return nodeString;
         }
     }
 }
