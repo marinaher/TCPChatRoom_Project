@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ServerData;
 using System.Net;
 using System.Net.Sockets;
@@ -12,6 +13,9 @@ namespace Client
         public static string name;
         public static string ID;
 
+        Dictionary<string, string> previousMessages = new Dictionary<string, string>();
+        
+
         static void Main(string[] args)
         {
             Console.WriteLine("Enter your username: ");
@@ -20,11 +24,9 @@ namespace Client
             Console.Clear();
             Console.WriteLine("Enter IP address:");
             string IP = Console.ReadLine();
-            Console.WriteLine("\nWhat is the port number?");
-            string port = Console.ReadLine();
 
             masterSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            IPEndPoint IP_end = new IPEndPoint(IPAddress.Parse(IP), int.Parse(port));
+            IPEndPoint IP_end = new IPEndPoint(IPAddress.Parse(IP), 4242);
             
             try
             {

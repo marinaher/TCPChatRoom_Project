@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ServerData
 {
     [Serializable]
-    public class Packet
+    public class Packet : BinaryWriter
     {
         public List<string> GeneralData;
         public int packetInt;
@@ -19,6 +19,7 @@ namespace ServerData
         public PacketType packetType;
 
         public Packet(PacketType type, string senderId)
+            : base()
         {
             GeneralData = new List<string>();
             this.senderID = senderID;
@@ -48,15 +49,15 @@ namespace ServerData
         }
         public static string GetIPAddress() 
         {
-            IPAddress[] ips = Dns.GetHostAddresses(Dns.GetHostName());      //getting all IP address but we only want our IP address
-            foreach (IPAddress ipAddress in ips)
+            IPAddress[] ip = Dns.GetHostAddresses(Dns.GetHostName());      //getting all IP address but we only want our IP address
+            foreach (IPAddress ipAddress in ip)
             {
                 if (ipAddress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
                 {
                     return ipAddress.ToString();
                 }
             }
-            return "10.2.20.51";                                             //default IP address: points back to user
+            return "10.2.20.12";
         }
     }
 
