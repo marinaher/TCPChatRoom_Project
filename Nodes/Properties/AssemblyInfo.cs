@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Node")]
+[assembly: AssemblyTitle("Nodes")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Hewlett-Packard")]
-[assembly: AssemblyProduct("Node")]
+[assembly: AssemblyProduct("Nodes")]
 [assembly: AssemblyCopyright("Copyright © Hewlett-Packard 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ef78c97e-2669-4afc-8648-0e172d276879")]
+[assembly: Guid("c5000d30-1e21-4069-a105-98ec246cecd5")]
 
 // Version information for an assembly consists of the following four values:
 //

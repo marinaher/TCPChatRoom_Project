@@ -13,12 +13,11 @@ namespace Client
         public static string name;
         public static string ID;
 
-        Dictionary<string, string> previousMessages = new Dictionary<string, string>();
-        
+        Dictionary<string, string> userNickName = new Dictionary<string, string>();
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter your username: ");
+            Console.WriteLine("Enter your nickname: ");
             name = Console.ReadLine();
 
             Console.Clear();

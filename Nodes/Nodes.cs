@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TreeNode
+namespace Nodes
 {
-    public class TreeNode<T>
+    public class Nodes<T>
     {
         public T Element { get; set; }
-        public TreeNode<T> left { get; set; }
-        public TreeNode<T> right { get; set; }
+        public Nodes<T> left { get; set; }
+        public Nodes<T> right { get; set; }
 
-        public TreeNode(T Element)
+        public Nodes(T Element)
         {
             this.Element = Element;
         }
