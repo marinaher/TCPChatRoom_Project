@@ -38,7 +38,7 @@ namespace Client
                 Main(args);
             }
 
-            Thread thread = new Thread(data_IN);
+            Thread thread = new Thread(Data_IN);
             thread.Start();
 
             for (;;)
@@ -53,7 +53,7 @@ namespace Client
             }
         }
 
-        static void data_IN()
+        static void Data_IN()
         {
             byte[] buffer;
             int readBytes;
