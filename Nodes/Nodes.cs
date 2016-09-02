@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nodes
 {
-    public class Nodes<T>
+    public class Nodes<T> where T : IComparable
     {
         public T Element { get; set; }
         public Nodes<T> left { get; set; }
