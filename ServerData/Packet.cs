@@ -57,7 +57,7 @@ namespace ServerData
                     return ipAddress.ToString();
                 }
             }
-            return "10.2.20.12";
+            return "127.0.0.1";
         }
     }
 
