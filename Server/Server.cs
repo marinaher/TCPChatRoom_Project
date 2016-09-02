@@ -15,6 +15,7 @@ namespace Server
 
         public static void Main(string[] args)
         {
+            Console.Title = "*** TCP ChatRoom ***";
             Console.WriteLine("Starting Server on: " + Packet.GetIPAddress());
 
             listenerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -35,6 +36,7 @@ namespace Server
             {
                 listenerSocket.Listen(0);                                       // 0 is backlog 
                 clients.Add(new ClientData(listenerSocket.Accept()));           //adding new client data and socket is listening and will accept the new client
+                Console.WriteLine("A client has joined your server!");
             }
         }
 
