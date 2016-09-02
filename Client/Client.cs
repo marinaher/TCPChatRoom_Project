@@ -13,15 +13,15 @@ namespace Client
         public static string name;
         public static string ID;
 
-        Dictionary<string, string> userNickName = new Dictionary<string, string>();
+        //public Dictionary<string, DateTime> messageSentTime = new Dictionary<string, date>();
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter your nickname: ");
+            Console.WriteLine("\nEnter your nickname: ");           //if no name entered, error and prompt to enter name again
             name = Console.ReadLine();
-
+            
             Console.Clear();
-            Console.WriteLine("Enter IP address:");
+            Console.WriteLine("Enter IP address:");                 //if IP address is entered through, try/catch this error
             string IP = Console.ReadLine();
 
             masterSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -47,7 +47,7 @@ namespace Client
 
                 Packet packet = new Packet(PacketType.chat, ID);
                 packet.GeneralData.Add(name);
-                packet.GeneralData.Add(input);                                          //gets input and sends to server
+                packet.GeneralData.Add(input);
                 masterSocket.Send(packet.ToBytes());
             }
         }
@@ -57,7 +57,7 @@ namespace Client
             byte[] buffer;
             int readBytes;
 
-            for (; ; )
+            for (; ;)
             {
                 try
                 {
@@ -83,12 +83,13 @@ namespace Client
             switch (packet.packetType)
             {
                 case PacketType.Registration:
-                    Console.WriteLine("You are now connected, {0}. \nEnter Message: ", name);
+                    Console.WriteLine("You are now connected, {0}. \nSay Hello: ", name);
                     ID = packet.GeneralData[0];
                     break;
                 case PacketType.chat:
                     ConsoleColor color = Console.ForegroundColor;
-                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    
                     Console.WriteLine(packet.GeneralData[0] + ": " + packet.GeneralData[1]);
                     Console.ForegroundColor = color;
                     break;

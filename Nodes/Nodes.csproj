@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BinaryTree.cs" />
+    <Compile Include="BinarySearchTree.cs" />
     <Compile Include="Nodes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

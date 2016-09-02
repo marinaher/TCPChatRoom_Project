@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,8 @@ namespace ServerData
     public class Packet : BinaryWriter
     {
         public List<string> GeneralData;
-        public int packetInt;
-        public bool packetBool;
+        //public int packetInt;
+        //public bool packetBool;
         public string senderID;
         public PacketType packetType;
 
@@ -29,7 +30,7 @@ namespace ServerData
         {
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             MemoryStream memoryStream = new MemoryStream();                 //makes it easy to convert to and from bytes
-            binaryFormatter.Serialize(memoryStream, this);                  // 'this' implies the object we're contained in
+            binaryFormatter.Serialize(memoryStream, this);
             byte[] bytes = memoryStream.ToArray();
             memoryStream.Close();
             return bytes;
@@ -39,17 +40,26 @@ namespace ServerData
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             MemoryStream memoryStream = new MemoryStream(packetBytes);
 
-            Packet packet = (Packet)binaryFormatter.Deserialize(memoryStream);    //deserialize
+            Packet packet = (Packet)binaryFormatter.Deserialize(memoryStream);
             memoryStream.Close();
             GeneralData = packet.GeneralData;
-            packetInt = packet.packetInt;
-            packetBool = packet.packetBool;
+            //packetInt = packet.packetInt;
+            //packetBool = packet.packetBool;
             senderID = packet.senderID;
             packetType = packet.packetType;
         }
+        public byte[] PacketToByteArray(object packet)
+        {
+            using (var stream = new MemoryStream())
+            {
+                IFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(stream, packet);
+                return stream.ToArray();
+            }
+        }
         public static string GetIPAddress() 
         {
-            IPAddress[] ip = Dns.GetHostAddresses(Dns.GetHostName());      //getting all IP address but we only want our IP address
+            IPAddress[] ip = Dns.GetHostAddresses(Dns.GetHostName());
             foreach (IPAddress ipAddress in ip)
             {
                 if (ipAddress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
@@ -57,14 +67,14 @@ namespace ServerData
                     return ipAddress.ToString();
                 }
             }
-            return "127.0.0.1";
+            return GetIPAddress();
         }
     }
 
-    public enum PacketType                                                  //enumerator: creating categories
+    public enum PacketType
     {
         Registration,
-        chat
+        chat,
     }
 }
 

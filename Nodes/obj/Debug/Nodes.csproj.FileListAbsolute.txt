@@ -1,0 +1,5 @@
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Nodes\bin\Debug\Nodes.dll
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Nodes\bin\Debug\Nodes.pdb
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Nodes\obj\Debug\Nodes.dll
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Nodes\obj\Debug\Nodes.pdb
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Nodes\obj\Debug\Nodes.csprojResolveAssemblyReference.cache
