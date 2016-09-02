@@ -19,13 +19,13 @@ namespace Nodes
         public override string ToString()
         {
             string nodeString = "[" + this.Element + "";
-            if (this.left == null && this.rightChild == null)
+            if (this.leftChild == null && this.rightChild == null)
             {
                 nodeString += " (Leaf) ";
             }
-            if (this.left != null)
+            if (this.leftChild != null)
             {
-                nodeString += "Left: " + this.left.ToString();
+                nodeString += "Left: " + this.leftChild.ToString();
             }
             if (this.rightChild != null)
             {
