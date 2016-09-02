@@ -9,8 +9,8 @@ namespace Nodes
     public class Nodes<T> where T : IComparable
     {
         public T Element { get; set; }
-        public Nodes<T> left { get; set; }
-        public Nodes<T> right { get; set; }
+        public Nodes<T> leftChild { get; set; }
+        public Nodes<T> rightChild { get; set; }
 
         public Nodes(T Element)
         {
@@ -19,7 +19,7 @@ namespace Nodes
         public override string ToString()
         {
             string nodeString = "[" + this.Element + "";
-            if (this.left == null && this.right == null)
+            if (this.left == null && this.rightChild == null)
             {
                 nodeString += " (Leaf) ";
             }
@@ -27,9 +27,9 @@ namespace Nodes
             {
                 nodeString += "Left: " + this.left.ToString();
             }
-            if (this.right != null)
+            if (this.rightChild != null)
             {
-                nodeString += "Right: " + this.right.ToString();
+                nodeString += "Right: " + this.rightChild.ToString();
             }
             nodeString += "]";
             return nodeString;
