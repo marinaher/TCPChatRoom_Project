@@ -7,8 +7,6 @@ namespace Nodes
 {
     class BinarySearchTree<TKey, TValue> : IEnumerable<Nodes<TKey, TValue>> where TKey : IComparable<TKey>
     {
-        Dictionary<string, Socket> Clients = new Dictionary<string, Socket>();
-
         private Nodes<TKey, TValue> _root;
 
         public bool Search(TKey key, out TValue value)
