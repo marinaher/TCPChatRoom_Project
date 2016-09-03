@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,33 +7,60 @@ using System.Threading.Tasks;
 
 namespace Nodes
 {
-    public class Nodes<T> where T : IComparable
+    public class Nodes<TKey, TValue> : IEnumerable<Nodes<TKey, TValue>>, IEquatable<Nodes<TKey, TValue>>
+        where TKey : IComparable<TKey>
     {
-        public T Element { get; set; }
-        public Nodes<T> leftChild { get; set; }
-        public Nodes<T> rightChild { get; set; }
-
-        public Nodes(T Element)
+        public Nodes(TKey key, TValue value) : this(key, value, null)
         {
-            this.Element = Element;
         }
-        public override string ToString()
+
+        public Nodes(TKey key, TValue value, Nodes<TKey, TValue> parent)
         {
-            string nodeString = "[" + this.Element + "";
-            if (this.leftChild == null && this.rightChild == null)
+            Key = key;
+            Value = value;
+            Parent = parent;
+        }
+
+        public Nodes<TKey, TValue> Parent { get; set; }
+        public Nodes<TKey, TValue> Left { get; set; }
+        public Nodes<TKey, TValue> Right { get; set; }
+        public TKey Key { get; set; }
+        public TValue Value { get; set; }
+        public int Balance { get; set; }
+
+        public bool Equals(Nodes<TKey, TValue> other)
+        {
+            if (other == null)
             {
-                nodeString += " (Leaf) ";
+                throw new ArgumentNullException(nameof(other));
             }
-            if (this.leftChild != null)
+            return Key.CompareTo(other.Key) == 0;
+        }
+
+        public override bool Equals(object other)
+        {
+            if (ReferenceEquals(null, other))
             {
-                nodeString += "Left: " + this.leftChild.ToString();
+                return false;
             }
-            if (this.rightChild != null)
+            if (ReferenceEquals(this, other))
             {
-                nodeString += "Right: " + this.rightChild.ToString();
+                return true;
             }
-            nodeString += "]";
-            return nodeString;
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals(other as Nodes<TKey, TValue>);
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+        public IEnumerator<Nodes<TKey, TValue>> GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
     }
 }
