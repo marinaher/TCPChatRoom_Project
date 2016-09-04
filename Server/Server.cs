@@ -8,10 +8,12 @@ using System.Threading;
 
 namespace Server
 {
-    class Server
+    class Server                                // IObserverable to alert Server when a client has connected?
     {
         static Socket listenerSocket;
         static List<ClientData> clients;
+
+        public static Dictionary<TcpClient, string> clientDictionary = new Dictionary<TcpClient, string>();
 
         public static void Main(string[] args)
         {
@@ -29,12 +31,22 @@ namespace Server
 
             Console.WriteLine("Success! \nListening IP: " + Packet.GetIPAddress());
         }
+        public static void addToClientList()
+        {
+            TcpListener myList;
+            myList = new TcpListener(IPAddress.Any, 4242);
+            while (true)
+            {
+                TcpClient client = myList.AcceptTcpClient();
+                clientDictionary.Add(client, "name");
+            }
+        }
 
         static void ListenThread()
         {
-            for (;;)                                                            //for loop is infinite b/c we want the listener to listen for new clients until the program closes
+            for (;;)
             {
-                listenerSocket.Listen(0);                                       // 0 is backlog 
+                listenerSocket.Listen(0);
                 clients.Add(new ClientData(listenerSocket.Accept()));           //adding new client data and socket is listening and will accept the new client
                 Console.WriteLine("A client has joined your server!");
             }
@@ -44,7 +56,7 @@ namespace Server
         {
             Socket clientSocket = (Socket)client_socket;
 
-            byte[] buffer;                                                      //buffer array
+            byte[] buffer;
             int readBytes;
 
             for (; ; )

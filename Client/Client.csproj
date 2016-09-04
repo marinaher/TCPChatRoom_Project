@@ -50,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Nodes\Nodes.csproj">
+      <Project>{c5000d30-1e21-4069-a105-98ec246cecd5}</Project>
+      <Name>Nodes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ServerData\ServerData.csproj">
       <Project>{86ae5af1-08a3-4e01-8a8c-cf1455a16cde}</Project>
       <Name>ServerData</Name>
