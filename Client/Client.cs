@@ -15,7 +15,7 @@ namespace Client
 
         static void Main(string[] args)
         {
-            Console.WriteLine("\nEnter your nickname: ");
+            Console.WriteLine("Enter your nickname: ");
             name = Console.ReadLine();
             
             Console.Clear();
@@ -81,7 +81,7 @@ namespace Client
             switch (packet.packetType)
             {
                 case PacketType.Registration:
-                    Console.WriteLine("You are now connected, {0}. \nSay Hello: ", name);
+                    Console.WriteLine("\nYou are now connected {0}. \nPress control + c to exit anytime. \nSay Hello: ", name);
                     ID = packet.GeneralData[0];
                     break;
                 case PacketType.chat:
