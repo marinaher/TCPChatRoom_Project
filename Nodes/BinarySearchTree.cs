@@ -100,6 +100,10 @@ namespace Nodes
                 right.Parent = target;
             }
         }
+        private static void Print(Nodes<TKey, TValue>, ref string newString)
+        {
+
+        }
         IEnumerator<Nodes<TKey, TValue>> IEnumerable<Nodes<TKey, TValue>>.GetEnumerator()
         {
             return _root.GetEnumerator();

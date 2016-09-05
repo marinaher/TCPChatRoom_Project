@@ -44,10 +44,10 @@ namespace Server
 
         static void ListenThread()
         {
-            for (;;)
+            while (true)
             {
                 listenerSocket.Listen(0);
-                clients.Add(new ClientData(listenerSocket.Accept()));           //adding new client data and socket is listening and will accept the new client
+                clients.Add(new ClientData(listenerSocket.Accept()));
                 Console.WriteLine("A client has joined your server!");
             }
         }
