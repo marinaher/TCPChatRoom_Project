@@ -13,15 +13,13 @@ namespace Client
         public static string name;
         public static string ID;
 
-        //public Dictionary<string, DateTime> messageSentTime = new Dictionary<string, date>();
-
         static void Main(string[] args)
         {
-            Console.WriteLine("\nEnter your nickname: ");           //if no name entered, error and prompt to enter name again
+            Console.WriteLine("\nEnter your nickname: ");
             name = Console.ReadLine();
             
             Console.Clear();
-            Console.WriteLine("Enter IP address:");                 //if IP address is entered through, try/catch this error
+            Console.WriteLine("Enter IP address:");
             string IP = Console.ReadLine();
 
             masterSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
