@@ -14,8 +14,6 @@ namespace ServerData
     public class Packet : BinaryWriter
     {
         public List<string> GeneralData;
-        //public int packetInt;
-        //public bool packetBool;
         public string senderID;
         public PacketType packetType;
 
@@ -26,10 +24,10 @@ namespace ServerData
             this.senderID = senderID;
             this.packetType = type;
         }
-        public byte[] ToBytes()                                             //once intialized, will turn to array of bytes
+        public byte[] ToBytes()
         {
             BinaryFormatter binaryFormatter = new BinaryFormatter();
-            MemoryStream memoryStream = new MemoryStream();                 //makes it easy to convert to and from bytes
+            MemoryStream memoryStream = new MemoryStream();
             binaryFormatter.Serialize(memoryStream, this);
             byte[] bytes = memoryStream.ToArray();
             memoryStream.Close();
@@ -43,8 +41,6 @@ namespace ServerData
             Packet packet = (Packet)binaryFormatter.Deserialize(memoryStream);
             memoryStream.Close();
             GeneralData = packet.GeneralData;
-            //packetInt = packet.packetInt;
-            //packetBool = packet.packetBool;
             senderID = packet.senderID;
             packetType = packet.packetType;
         }

@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace Server
 {
-    class Server                                // IObserverable to alert Server when a client has connected?
+    class Server
     {
         static Socket listenerSocket;
         static List<ClientData> clients;

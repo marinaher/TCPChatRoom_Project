@@ -14,7 +14,7 @@ namespace Server
 
         public ClientData()
         {
-            ID = Guid.NewGuid().ToString();                     //random string of text so we can ID client as unique client
+            ID = Guid.NewGuid().ToString();
             clientThread = new Thread(Server.Data_IN);
             clientThread.Start(clientSocket);
             SendRegistrationPacket();
@@ -31,7 +31,7 @@ namespace Server
 
         public void SendRegistrationPacket()
         {
-            Packet packet = new Packet(PacketType.Registration, "server");          //send packet to client
+            Packet packet = new Packet(PacketType.Registration, "server");
             packet.GeneralData.Add(ID);
             clientSocket.Send(packet.ToBytes());
         }
