@@ -13,6 +13,7 @@ namespace Server
         static Socket listenerSocket;
         static List<ClientData> clients;
 
+        public static Queue<string> messageQueue = new Queue<string>();
         public static Dictionary<TcpClient, string> clientDictionary = new Dictionary<TcpClient, string>();
 
         public static void Main(string[] args)
@@ -52,7 +53,7 @@ namespace Server
             }
         }
 
-        public static void Data_IN(object client_socket)                        //client data thread - reads data from client
+        public static void Data_IN(object client_socket)
         {
             Socket clientSocket = (Socket)client_socket;
 
@@ -63,10 +64,10 @@ namespace Server
             {
                 try
                 {
-                    buffer = new byte[clientSocket.SendBufferSize];             //same size of buffer array size - buffer contains data read
-                    readBytes = clientSocket.Receive(buffer);                   //constantly reading to see how many buffers read
+                    buffer = new byte[clientSocket.SendBufferSize];
+                    readBytes = clientSocket.Receive(buffer);
 
-                    if (readBytes > 0)                                          //reading data from each client if client sends data
+                    if (readBytes > 0)
                     {
                         Packet packet = new Packet(buffer);
                         DataManager(packet);
@@ -86,7 +87,7 @@ namespace Server
             switch (packet.packetType)
             {
                 case PacketType.chat:
-                    foreach (ClientData client in clients)                      //server takes the information and foward to all connected clients.
+                    foreach (ClientData client in clients)
                     {
                         client.clientSocket.Send(packet.ToBytes());
                     }

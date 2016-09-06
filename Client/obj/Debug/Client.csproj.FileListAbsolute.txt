@@ -6,3 +6,5 @@ C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Client\b
 C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Client\obj\Debug\Client.exe
 C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Client\obj\Debug\Client.pdb
 C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Client\bin\Debug\Nodes.dll
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\TCPChatRoomProject\Client\bin\Debug\Nodes.pdb
